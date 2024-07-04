@@ -1,0 +1,70 @@
+﻿@model Oshipple.Models.AllSongs
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>詳細</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            タイトル
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            タイトルふりがな
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title_Kana)
+        </dd>
+        <dt class="col-sm-2">
+            アーティスト
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artist)
+        </dd>
+        <dt class="col-sm-2">
+            アーティストふりがな
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artist_Kana)
+        </dd>
+        <dt class="col-sm-2">
+            選曲者
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Selector)
+        </dd>
+        <dt class="col-sm-2">
+            Mood
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mood1)
+        </dd>
+        <dt class="col-sm-2">
+            
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mood2)
+        </dd>
+        <dt class="col-sm-2">
+            推し度
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rank)
+        </dd>
+        <dt class="col-sm-2">
+            コメント
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Songs" asp-route-sortOrder="@ViewData["SortParm"]" asp-route-mood="@ViewData["MoodParm"]" asp-route-selector="@ViewData["SelectorParm"]" asp-route-pageNumber="@ViewData["PageIndex"]" type="button" class="btn btn-outline-info">戻る</a>
+</div>

@@ -1,0 +1,75 @@
+﻿<link rel="stylesheet" href="~/css/site.css"></link>
+
+@{
+    ViewData["Title"] = "Oshipple";
+}
+
+<body class="l-index">
+    <div class="text-center">
+        <br></br>
+        <h1 class="midashi">
+            <span>W</span>
+            <span>e</span>
+            <span>l</span>
+            <span>c</span>
+            <span>o</span>
+            <span>m</span>
+            <span>e</span>
+        </h1>
+        <h1 class="bun">-----------------------------------------------------------------------------------------------------------</h1>
+        <br></br>
+        <h1 class="bun">Oshi (推し) × Apple Music</h1>
+        <br></br>
+        <h1 class="bun">Find your favorite song ! </h1>
+        <br></br>
+        <h1 class="bun">-----------------------------------------------------------------------------------------------------------</h1>
+    </div>
+</body>
+
+<style>
+    .midashi {
+        color: white;
+        font-family: "Comic Sans MS";
+        text-shadow: 2px 2px 5px gainsboro;
+        font-size: 80px;
+    }
+
+    .bun {
+        color: white;
+        font-family: "Comic Sans MS";
+        text-shadow: 2px 2px 5px gainsboro;
+        font-size: 25px;
+    }
+
+    .midashi span {
+        display: inline-block;
+        opacity: 0;
+        animation: float-up 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        animation-delay: calc(0.1s * var(--char-index));
+    }
+
+    @@keyframes float-up {
+        0% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+@section Scripts {
+    <script>
+        window.addEventListener('load', function () {
+            const welcome = document.querySelector('.midashi');
+            const textChars = welcome.children;
+
+            for (let i = 0; i < textChars.length; i++) {
+                textChars[i].style.setProperty('--char-index', i);
+            }
+        });
+    </script>
+}

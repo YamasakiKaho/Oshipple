@@ -1,0 +1,114 @@
+﻿@model Oshipple.Models.AllSongs
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<body style="background-color: white;">
+
+
+    <h1 style="color: black;">編集</h1>
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title_Kana" class="control-label"></label>
+                    <input asp-for="Title_Kana" class="form-control" />
+                    <span asp-validation-for="Title_Kana" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Artist" class="control-label"></label>
+                    <input asp-for="Artist" class="form-control" />
+                    <span asp-validation-for="Artist" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Artist_Kana" class="control-label"></label>
+                    <input asp-for="Artist_Kana" class="form-control" />
+                    <span asp-validation-for="Artist_Kana" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Selector" class="control-label"></label>
+                    <select asp-for="Selector" class="form-control" />
+                    <option value=""></option>
+                    <option value="岩澤 あゆみ">岩澤 あゆみ</option>
+                    <option value="岡本 周樹">岡本 周樹</option>
+                    <option value="西 和希">西 和希</option>
+                    <option value="山崎 夏帆">山崎 夏帆</option>
+                    </select>
+                    <span asp-validation-for="Selector" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mood1" class="control-label"></label>
+                    <select asp-for="Mood1" class="form-control" />
+                    <option value=""></option>
+                    <option value="作業用BGM">作業用BGM</option>
+                    <option value="寝る前">寝る前</option>
+                    <option value="リラックス">リラックス</option>
+                    <option value="スポーツ">スポーツ</option>
+                    <option value="朝">朝</option>
+                    <option value="チル">チル</option>
+                    <option value="テンション上げたい">テンション上げたい</option>
+                    <option value="悩んでいるとき">悩んでいるとき</option>
+                    <option value="LOVE">LOVE</option>
+                    <option value="口ずさみたくなる">口ずさみたくなる</option>
+                    <option value="ヌル">NULL</option>
+                    </select>
+                    <span asp-validation-for="Mood1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mood2" class="control-label"></label>
+                    <select asp-for="Mood2" class="form-control" />
+                    <option value=""></option>
+                    <option value="作業用BGM">作業用BGM</option>
+                    <option value="寝る前">寝る前</option>
+                    <option value="リラックス">リラックス</option>
+                    <option value="スポーツ">スポーツ</option>
+                    <option value="朝">朝</option>
+                    <option value="チル">チル</option>
+                    <option value="テンション上げたい">テンション上げたい</option>
+                    <option value="悩んでいるとき">悩んでいるとき</option>
+                    <option value="LOVE">LOVE</option>
+                    <option value="口ずさみたくなる">口ずさみたくなる</option>
+                    <option value="ヌル">NULL</option>
+                    </select>
+                    <span asp-validation-for="Mood2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rank" class="control-label"></label>
+                    <input asp-for="Rank" class="form-control" />
+                    <span asp-validation-for="Rank" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Comment" class="control-label"></label>
+                    <textarea asp-for="Comment" class="form-control shortcut"></textarea>
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+                <p></p>
+                <div class="form-group">
+                    <input type="submit" value="更新" class="btn btn-success" /> |
+                    <a asp-action="AdSongs" type="button" class="btn btn-outline-info">戻る</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+    <style>
+        .control-label {
+            color: black;
+        }
+    </style>
+</body>

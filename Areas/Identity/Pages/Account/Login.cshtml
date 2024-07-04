@@ -1,0 +1,92 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Selector Only";
+}
+
+<body>
+    <h1 class="title">Selector Only</h1>
+    <div class="row">
+        <section>
+            <form id="account" method="post">
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Eメールアドレス</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">パスワード</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">ログイン</button>
+                </div>
+                <div class="annai">
+                    <div class="a">
+                        <a id="forgot-password" asp-page="./ForgotPassword" style="color:white">パスワードをお忘れですか？</a>
+                    </div>
+                    <div class="b">
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" style="color:white">確認メールを再送信する</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    .title {
+        font-family: "MV Boli";
+        font-size: 80px;
+    }
+
+    .form-label {
+        color: white;
+    }
+
+    .form-control {
+        background-color: rgba(0,0,0,.5);
+        font-family: "MV Boli";
+    }
+
+    .btn {
+        background-color: rgba(0,0,0,.8);
+    }
+
+    .annai {
+        display: flex;
+    }
+
+    .a, .b {
+        margin-right: 50px;
+    }
+
+    body {
+        text-align: center;
+        background-image: url("/Image/Login/login3.jpg");
+        background-size: cover;
+        background-position: 80% 60%;
+    }
+
+    .checkbox {
+        text-align: left;
+    }
+
+    .text-danger {
+        text-align: left;
+    }
+</style>

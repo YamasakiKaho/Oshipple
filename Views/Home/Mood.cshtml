@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700 rel="stylesheet"></link>
+    <link rel="stylesheet" href="~/css/site.css"></link>
+</head>
+
+@{
+    ViewData["title"] = "Mood";
+}
+
+<body style="background-color:#1a1a1a">
+    <div backclass="#1a1a1a">
+        <div class="text-center">
+            <br>
+            <h1 class="mood-midasi">Mood</h1>
+            <p class="mood-setumei"></p>
+            <p class="mood-setumei"> How dou you feel？</p>
+            <br>
+            <style>
+                /* Moodのボタン配置*/
+
+                .mood-container {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-around;
+                }
+
+                .Mood-btn {
+                    width: 200px;
+                    height: 200px;
+                }
+
+                .mood-midasi {
+                    color: white;
+                    font-family: "Amatic SC",'Ink Free';
+                    font-size: 75px;
+                }
+
+                .mood-setumei {
+                    color: white;
+                    font-family: "Amatic SC",'Ink Free',cursive;
+                    font-size: 30px;
+                }
+
+                .Mood-btn1 {
+                    width: 200px;
+                    height: 200px;
+                }
+                /* Moodのボタン配置おわり*/
+
+
+                /*Moodのボタン装飾*/
+
+                .Mood-btn {
+                    color: #fff;
+                    /*font-size: 16px;
+                    font-weight: bold;*/
+                    background: #333;
+                    padding: 0.8px 0.8px;
+                    border-radius: 0px;
+                    position: relative;
+                    z-index: 1;
+                    display: inline-block;
+                    transition: .3s;
+                }
+
+                    .Mood-btn::before {
+                        content: "";
+                        width: 90%;
+                        height: 10px;
+                        position: absolute;
+                        top: 100%;
+                        left: 5%;
+                        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+                        z-index: -1;
+                        opacity: 0;
+                        transition: .3s;
+                    }
+
+                    .Mood-btn:hover {
+                        transform: translateY(-7px);
+                    }
+
+                        .Mood-btn:hover::before {
+                            transform: translateY(7px);
+                            opacity: 1;
+                        }
+                /*Moodのボタン装飾おわり*/
+            </style>
+
+            <div>
+                <div class="mood-container">
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="作業用BGM"><img src="~/Image/Mood/BGM for Work（作業用BGM）.PNG" class="Mood-btn"></img></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="寝る前"><img src="~/Image/Mood/Sleep（寝る前）.PNG" class="Mood-btn"></img></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="リラックス"><img src="~/Image/Mood/Relax（リラックス）.PNG" class="Mood-btn"></img></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="スポーツ"><img src="~/Image/Mood/Sports（スポーツ）.PNG" class="Mood-btn"></img></a>
+                </div>
+            </div>
+            <br></br>
+            <div>
+                <div class="mood-container">
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="朝"><img src="~/Image/Mood/Morning（朝）.PNG" class="Mood-btn"></img></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="Chill"><img src="~/Image/Mood/Chill（チル）.PNG" class="Mood-btn"></img></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="テンションあげたい"><img src="~/Image/Mood/Excited（テンションあげたい）.PNG" class="Mood-btn"></img></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="悩んでいるとき"><img src="~/Image/Mood/Thinking（悩んでいるとき）.PNG" class="Mood-btn"></img></a>
+                </div>
+            </div>
+            <br></br>
+            <div>
+                <div class="mood-container">
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="LOVE"><img src="~/Image/Mood/LOVE（LOVE）.PNG" class="Mood-btn"></ing></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="口ずさみたくなる"><img src="~/Image/Mood/Humming（口ずさみたくなる）.PNG" class="Mood-btn"></ing></a>
+                    <a asp-action="Songs" asp-controller="AllSongs" asp-route-mood="ヌル"><img src="~/Image/Mood/null（気分不明）.PNG" class="Mood-btn"></ing></a>
+                    <label asp-action="" asp-controller="" asp-route-mood=""><label src="" class="Mood-btn1"></label>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
+

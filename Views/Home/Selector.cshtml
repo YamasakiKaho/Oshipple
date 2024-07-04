@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css"></link>
+</head>
+
+@{
+    ViewData["title"] = "Selector";
+}
+<body class="Playlist">
+    <div class="text-center" backclass="#1a1a1a">
+        <br>
+        <h1 class="Playlist-title">Selector's Playlist</h1>
+        <p class="Playlist-setumei"></p>
+        <p class="Playlist-setumei"></p>
+        <br>
+
+        <style>
+
+            /*PlaylistページのCSS　はじまり*/
+
+            .Playlist {
+                background-color: #1a1a1a;
+            }
+
+            .Playlist-title {
+                color: white;
+                font-family: 'Segoe Print','Kaushan Script',Comic Sans MS, cursive;
+                font-size: 50px;
+            }
+
+            .selectorsBtn {
+                width: 240px;
+                margin: 30px 15px 0 15px;
+            }
+
+            /*Selector'S Playlistボタン装飾 */
+
+            .wrap a span {
+                position: absolute;
+                opacity: 0;
+                top: -50px;
+                left: 75px;
+                width: 120px;
+                padding: 10px;
+                border-radius: 2px;
+                background: #888888;
+                color: #fff;
+                font-size: 12px;
+                line-height: 1;
+                transition: .3s;
+            }
+
+                .wrap a span:after {
+                    position: absolute;
+                    top: 100%;
+                    left: 50px;
+                    height: 0;
+                    width: 0;
+                    border: 6px solid transparent;
+                    border-top: 6px solid #888888;
+                    content: "";
+                }
+
+            .wrap a:hover span {
+                opacity: 10;
+                top: -150px;
+            }
+
+            .wrap a {
+                position: relative;
+                display;
+                inline-block;
+            }
+
+            .wrap li {
+                list-style: none;
+                float: left;
+                margin: 0;
+                padding: 0.5px;
+            }
+
+            /*Selector's Playlistボタン装飾おわり */
+        </style>
+
+        <div>
+            <div>
+                <ul class="wrap">
+
+                    <a href="#">
+                    <li><a asp-controller="AllSongs" asp-action="Songs" asp-route-selector="岩澤 あゆみ"><img src="~/Image/Selector/iwalist.jpeg" class="selectorsBtn"><span>CHOOOOOSE ME!!!!</span></a></li>
+                    <li><a asp-controller="AllSongs" asp-action="Songs" asp-route-selector="山崎 夏帆"><img src="~/Image/Selector/kaho's Playlist.jpg" class="selectorsBtn"><span>CHOOOOOSE ME!!!!</span></a></li>
+                    <li><a asp-controller="AllSongs" asp-action="Songs" asp-route-selector="西 和希"><img src="~/Image/Selector/nishi_selector用.png" class="selectorsBtn"><span>CHOOOOOSE ME!!!!</span></a></li>
+                    <li><a asp-controller="AllSongs" asp-action="Songs" asp-route-selector="岡本 周樹"><img src="/Image/Selector/playlist.png" class="selectorsBtn"><span>CHOOOOOSE ME!!!!</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

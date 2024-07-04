@@ -1,0 +1,257 @@
+﻿@model PaginatedList<Oshipple.Models.AllSongs>
+
+
+
+@{
+    ViewData["Title"] = "楽曲リスト";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <h1 style="color: white; font-family:'M PLUS Rounded 1c', sans-serif; font-weight: bold;">@ViewData["hyoudai"]@ViewData["MoodParm"]@ViewData["SelectorParm"]</h1>
+
+    <table class="table" style="color: white; font-family:'M PLUS Rounded 1c', sans-serif;   ">
+        <thead>
+            <tr>
+                <th id="col1">
+                    <a href="@Url.Action("Songs","AllSongs", new { sortOrder = @ViewData["TitleSortParm"], mood=@ViewData["MoodParm"], selector=@ViewData["SelectorParm"], pageNumber=1 })" class="linkwhite" >@ViewData["ListTitle"]</a>
+                </th>
+                <th id="col1">
+                    <a href="@Url.Action("Songs","AllSongs", new { sortOrder = @ViewData["ArtistSortParm"], mood=@ViewData["MoodParm"], selector=@ViewData["SelectorParm"], pageNumber=1 })" class="linkwhite">@ViewData["ListArtist"]</a>
+                </th>
+                @if (@ViewData["SelectorParm"] == null)
+                {
+                    <th id="col3">
+                        選曲者
+                    </th>
+                }
+                else
+                {
+                    <th></th>
+                }
+                @if (@ViewData["MoodParm"] == null)
+                {
+                    <th id="col2">
+                        ムード
+                    </th>
+                    <th id="col2">
+
+                    </th>
+                }
+                else
+                {
+                    <th></th>
+                    <th></th>
+                }
+                <th id ="col6">
+                    <a href="@Url.Action("Songs","AllSongs", new { sortOrder = @ViewData["RankSortParm"], mood=@ViewData["MoodParm"], selector=@ViewData["SelectorParm"], pageNumber=1 })" class="linkwhite">@ViewData["ListRank"]</a>
+
+
+                </th>
+                <th id="col5">
+                    @*
+                    @Html.DisplayNameFor(model => model.Comment)
+                    *@
+                    コメント
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td id="col1">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td id="col1">
+                        @Html.DisplayFor(modelItem => item.Artist)
+                    </td>
+
+                    @if (@ViewData["SelectorParm"] == null)
+                    {
+                        <td id="col3">
+                            @Html.DisplayFor(modelItem => item.Selector)
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+
+
+                    @if (@ViewData["MoodParm"] == null)
+                    {
+                        <td id="col2">
+                            @Html.DisplayFor(modelItem => item.Mood1)
+                        </td>
+                        <td id="col2">
+                            @Html.DisplayFor(modelItem => item.Mood2)
+                        </td>
+                    }
+
+                    else
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+
+                    <td id="col8">
+                        @Html.DisplayFor(modelItem => item.Rank)
+                    </td>
+                    @if (item.Comment != "")
+                    {
+                        <td id="col7" class="co">
+                            <img width="20" height="20" src="~/Image/Songs/Comment.png" />
+                            <span class="comm">@Html.DisplayFor(modelItem => item.Comment)</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td id="col7"></td>
+                    }
+
+                    <td>
+                        <a asp-action="Details" asp-route-sortOrder="@ViewData["SortParm"]"
+                           asp-route-mood="@ViewData["MoodParm"]"
+                           asp-route-selector="@ViewData["SelectorParm"]"
+                           asp-route-pageNumber="@Model.PageIndex"
+                           asp-route-id="@item.Id" class="linkwhite">詳細</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Songs"
+       asp-route-sortOrder="@ViewData["SortParm"]"
+       asp-route-mood="@ViewData["MoodParm"]"
+       asp-route-selector="@ViewData["SelectorParm"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-default @prevDisabled" id="btn">
+        Previous
+    </a>
+
+    @for (var i=1; i<=@Model.TotalPages; i++)
+    {
+    <a asp-action="Songs"
+         asp-route-sortOrder="@ViewData["SortParm"]"
+       asp-route-mood="@ViewData["MoodParm"]"
+       asp-route-selector="@ViewData["SelectorParm"]"
+           asp-route-pageNumber=@i class="btn" id="btn">@i</a>
+    }
+
+    <a asp-action="Songs"
+       asp-route-sortOrder="@ViewData["SortParm"]"
+       asp-route-mood="@ViewData["MoodParm"]"
+       asp-route-selector="@ViewData["SelectorParm"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn @nextDisabled" id="btn">
+        Next
+    </a>
+</body>
+
+<style>
+    .linkwhite {
+    color:white;
+}
+
+    table {
+        width: 150%;
+        table-layout: fixed;
+    }
+
+    #col1 {
+        width: 230px;
+    }
+
+    #col2 {
+        width: 160px;
+    }
+
+    #col3 {
+        width: 120px;
+    }
+
+    #col4 {
+        width: 185px;
+    }
+
+    #col5 {
+        width: 80px;
+    }
+    #col6{
+        width: 70px;
+    }
+    #col7{
+        width: 80px;
+        text-align:center;
+    }
+
+    #col8 {
+        width: 70px;
+        text-align: center;
+    }
+
+.co {
+    position: relative;
+}
+
+    .co:hover .comm {
+        display: inline-block;
+        width: 300px;
+        /*height: 100px;*/
+        /*font-size: 16px;*/
+    }
+
+.comm {
+    position: absolute; /* 親要素を基準 */
+    display: none; /* 要素を非表示 */
+    padding: 2px; /* テキストの前後の余白 */
+    background-color: rgba(102, 102, 255, 0.750); /* 背景色（透明度） */
+    /* width: 350px; */ /* 吹き出し全体の幅 */
+    max-width: 200px;
+    box-sizing: border-box;
+    left: -260%; /* 表示位置 */
+    margin-bottom: 12px;
+    bottom: 55%;
+    text-align: center;
+    font-size: 80%; /* 文字サイズ */
+}
+
+    body {
+        background-image: url("/Image/Songs/AllSongs.jpg");
+        background-position: bottom;
+        background-size: 100% 100%;
+    }
+
+    #btn {
+    background-color: white;
+    color: black;
+}
+.hov-bright {
+    transition: filter 0.1s ease;
+    filter: brightness(1.0); /* デフォルト値なのでこの一行は省略してもOK */
+}
+    .hov-bright:hover {
+        filter: brightness(1.10); /* 明るくする */
+        opacity: 0.7
+    }
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.rem #258cfb;
+    background-color:white;
+    color: gray;
+}
+
+</style>
+

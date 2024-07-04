@@ -1,0 +1,77 @@
+﻿@model Oshipple.Models.AllSongs
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<body style="background-color: white;">
+
+
+<h1 style="color: black;">詳細</h1>
+
+<div>
+    <hr />
+    <dl class="row" style="color: black;">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title_Kana)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title_Kana)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artist)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artist_Kana)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artist_Kana)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Selector)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Selector)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mood1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mood1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mood2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mood2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rank)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rank)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-success">編集</a> |
+    <a asp-action="AdSongs" type="button" class="btn btn-outline-info">戻る</a>
+</div>
+
+
+</body>
